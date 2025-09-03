@@ -73,7 +73,7 @@ When the command is complete and all k8s pods are running inside **`local`** nam
 
 >Note: `helmfile cache cleanup` is needed to force to re-fetch remote values.yaml files from git repos. Otherwise it will never invalidate them. Links: https://github.com/roboll/helmfile/issues/720#issuecomment-1516613493 and https://helmfile.readthedocs.io/en/latest/#cache.
 
->Note: if one of your services version was updated e.g. a newer version was published to `tormaline-core-home-ui:latest` you won't see the changes executing `helmfile apply` command. Instead you need to remove the respective service Pod that it can be re-created by its Deployment and fetch the latest docker image. 
+>Note: if one of your services version was updated e.g. a newer version was published to `home-ui:latest` you won't see the changes executing `helmfile apply` command. Instead you need to remove the respective service Pod that it can be re-created by its Deployment and fetch the latest docker image. 
 
 ### Debugging Helm Charts
 
@@ -182,10 +182,10 @@ helmfile cache cleanup && helmfile --environment local --namespace local -f depl
     This site can’t be reached localhost refused to connect.
     ```
     if you see this in your browser please try to open in Incognito Mode
-- cannot install tormaline-core-home-ui chart
+- cannot install home-ui chart
     ```
     COMBINED OUTPUT:
-    Release "tormaline-core-home-ui" does not exist. Installing it now.
+    Release "home-ui" does not exist. Installing it now.
     coalesce.go:286: warning: cannot overwrite table with non table for nginx.ingress.annotations (map[])
     coalesce.go:286: warning: cannot overwrite table with non table for nginx.ingress.annotations (map[])
     Error: context deadline exceeded
@@ -193,13 +193,13 @@ helmfile cache cleanup && helmfile --environment local --namespace local -f depl
     if you see this after you try to run `helmfile apply` command, simply retry `helmfile apply` command.
 - cannot deploy using helmfile apply
     ```
-    Error: Failed to get release tormaline-core-home-ui in namespace local: exit status 1: WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /workspaces/tormaline-core-home-local-env/.tormaline-core-home-cluster-kubeconfig
-  WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /workspaces/tormaline-core-home-local-env/.tormaline-core-home-cluster-kubeconfig
+    Error: Failed to get release home-ui in namespace local: exit status 1: WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /workspaces/home-local-env/.home-cluster-kubeconfig
+  WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /workspaces/home-local-env/.home-cluster-kubeconfig
     ```
-    Try to delete the cluster docker container and its generated `.tormaline-core-home-cluster-kubeconfig` file and then re-open VSCode as an Administrator and redo everything from scratch.
+    Try to delete the cluster docker container and its generated `.home-cluster-kubeconfig` file and then re-open VSCode as an Administrator and redo everything from scratch.
 
 - in case of any other weird issue:
-    1a. Remove the `tormaline-core-home-control-plane` docker container (in case of kind).
+    1a. Remove the `home-control-plane` docker container (in case of kind).
     1b. Remove the `local` namespace (in case of Docker Desktop).
     2. Remove the cluster from Lens (in case of kind).
     3. Re-try over starting from `kind create` command (in case of kind).
