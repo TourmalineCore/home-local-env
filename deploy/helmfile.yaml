@@ -22,6 +22,25 @@ releases:
     values:
       - values-ingress-nginx.yaml.gotmpl
 
+  - name: postgresql
+    namespace: default
+    labels:
+      app: postgresql
+    wait: true
+    chart: bitnami/postgresql
+    version: 12.2.7
+    values:
+      - values-postgre.yaml.gotmpl
+
+  - name: minio-s3
+    labels:
+      app: minio-s3
+    wait: true
+    chart: bitnami/minio
+    version: 14.8.5
+    values: 
+      - values-minio.yaml.gotmpl
+
   - name: home-ui
     labels:
       app: home-ui
@@ -35,6 +54,24 @@ releases:
       - ingress-nginx
     values:
       # https://helmfile.readthedocs.io/en/latest/#loading-remote-environment-values-files
-      - git::https://github.com/TourmalineCore/home-ui.git@/ci/values.yaml?ref={{ env "HOME_UI_BRANCH" | default "master" }}
+      - git::https://github.com/TourmalineCore/home-ui.git@/ci/values.yaml?ref=master
       - values.yaml.gotmpl
       - values-home-ui.yaml.gotmpl
+
+  - name: home-cms
+    labels:
+      app: home-cms
+    wait: true
+    chart: bitnami/nginx
+    # after 15.3.5 our docker file or setup can no longer start, need to investigate what is wrong for the newer versions
+    version: 15.3.5
+    # it won't work anyway until ingress controller is created
+    # thus we wait for it to be ready first
+    needs: 
+      - ingress-nginx
+      - postgresql
+    values:
+      # https://helmfile.readthedocs.io/en/latest/#loading-remote-environment-values-files
+      - git::https://github.com/TourmalineCore/home-cms.git@/ci/values.yaml?ref=master
+      - values.yaml.gotmpl
+      - values-home-cms.yaml.gotmpl
