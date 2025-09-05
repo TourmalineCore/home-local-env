@@ -56,7 +56,7 @@ releases:
       # https://helmfile.readthedocs.io/en/latest/#loading-remote-environment-values-files
       - git::https://github.com/TourmalineCore/home-ui.git@/ci/values.yaml?ref=master
       - values.yaml.gotmpl
-      - values-home-ui.yaml.gotmpl
+      - values-ui.yaml.gotmpl
 
   - name: home-cms
     labels:
@@ -74,4 +74,4 @@ releases:
       # https://helmfile.readthedocs.io/en/latest/#loading-remote-environment-values-files
       - git::https://github.com/TourmalineCore/home-cms.git@/ci/values.yaml?ref=master
       - values.yaml.gotmpl
-      - values-home-cms.yaml.gotmpl
+      - values-cms.yaml.gotmpl
