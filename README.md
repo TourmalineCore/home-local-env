@@ -86,6 +86,20 @@ helmfile cache cleanup && helmfile --environment local --namespace local -f depl
 ## Services URLs
 
 - ui: http://localhost:40120
+- cms: http://localhost:40120/cms/admin
+- minio-s3-ui: http://minio-s3-console.localhost:40120
+
+## Minio-s3 UI
+- Open http://minio-s3-console.localhost:40120
+- Write login and password:
+    - `login`: *admin*
+    - `password`: *rootPassword*
+
+## CMS admin panel
+- Open http://localhost:40120/cms/admin
+- Write login and password:
+    - `email`: *admin@init-strapi-admin.strapi.io*
+    - `password`: *admin*
 
 ## Upgrade Infra Dependencies
 
