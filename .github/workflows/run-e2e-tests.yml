@@ -43,7 +43,7 @@ jobs:
         # we use --reporter=list to prints a line for each test being run
         # https://playwright.dev/docs/test-reporters#list-reporter
         runCmd: |
-          npx playwright test --config=playwright.e2e.config.ts --reporter=html
+          npx playwright test --config=playwright.e2e.config.ts --reporter=list,html
         # we don't need to push docker image that was built using our Dev Container
         push: never
         # we forward CI env var value from GitHub to Dev Container
@@ -80,7 +80,7 @@ jobs:
         subFolder: home-cms
         configFile: ./home-cms/.devcontainer/e2e-tests-in-pr/devcontainer.json
         runCmd: |
-          npx playwright test --reporter=html 
+          npx playwright test --reporter=list,html 
         push: never
         env: |
           PLAYWRIGHT_HTML_OPEN=never
