@@ -3,6 +3,6 @@ image:
 
 extraConfigMapEnvVars:
   CMS_URL: "http://home-cms-nginx:40120"
-  FRONTEND_URL: "{{ .HOME_BASE_EXTERNAL_URL }}"
+  FRONTEND_URL: "{{ .Values.HOME_BASE_EXTERNAL_URL }}"
 
   PREVIEW_SECRET: "{{ .Values.HOME_PREVIEW_SECRET }}"
