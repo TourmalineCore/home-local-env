@@ -5,9 +5,9 @@ controller:
   service:
     type: NodePort
     ports:
-      http: "{{ .Values.externalPort }}"
+      http: "{{ .Values.HOME_EXTERNAL_PORT }}"
     nodePorts:
-      http: "{{ .Values.internalPort }}"
+      http: "{{ .Values.HOME_INTERNAL_PORT }}"
       https: 
   # not needed in this setup
   admissionWebhooks:
