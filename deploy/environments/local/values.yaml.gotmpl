@@ -1,14 +1,14 @@
-hostname: "localhost"
+HOME_HOSTNAME: "localhost"
 
-# there are the same internalPort and externalPort to support both kind and Docker Desktop k8s clusters
+# there are the same HOME_INTERNAL_PORT and externalPort to support both kind and Docker Desktop k8s clusters
 # when these are different e.g. 40080 for externalPort it doesn't work for Docker Desktop
 # it was decided to keep things less explicit to support seemless switch between clusters
-internalPort: "30080"
+HOME_INTERNAL_PORT: "30080"
 # -- Port the external HTTP listener is published with.
-externalPort: "40120"
+HOME_EXTERNAL_PORT: "40120"
 
 # there has to be externalPort in baseExternalUrl (cannot be used as a variable in the same file)
-baseExternalUrl: "http://localhost:40120" 
+HOME_BASE_EXTERNAL_URL: "http://localhost:40120" 
 
 HOME_APP_KEYS: "l447ZbufnsvHicHvfpMoJA==,b00dkarNr56Er5mJLMr38w==,+GhweEM/mZi8NbBpkZIpDw==,TNAQ7URlV9PVGg7+zFXr7w=="
 HOME_API_TOKEN_SALT: "xgb5x7cdhbCNbveTtVtq2Q=="

@@ -9,11 +9,11 @@ defaultBuckets: home-local-env
 ingress:
   enabled: true
   ingressClassName: "nginx"
-  hostname: minio-s3-console.{{ .Values.hostname }}
+  hostname: minio-s3-console.{{ .Values.HOME_HOSTNAME }}
   path: /
 
 apiIngress:
   enabled: true
   ingressClassName: "nginx"
-  hostname: minio-s3.{{ .Values.hostname }}
+  hostname: minio-s3.{{ .Values.HOME_HOSTNAME }}
   path: /
