@@ -5,7 +5,7 @@ controller:
   service:
     type: NodePort
     ports:
-      http: "{{ .HOME_EXTERNAL_PORT }}"
+      http: "{{ .Values.HOME_EXTERNAL_PORT }}"
     nodePorts:
       http: "{{ .Values.HOME_INTERNAL_PORT }}"
       https: 
