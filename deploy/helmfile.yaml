@@ -8,7 +8,7 @@ repositories:
     url: https://kubernetes.github.io/ingress-nginx
 
 environments:
-  {{ .Environment.Name }}:
+  local:
     values:
       - environments/{{ .Environment.Name }}/values.yaml.gotmpl
 
